@@ -1,0 +1,15 @@
+---
+
+all:
+  hosts:
+    CSR1000v:
+      ansible_host: 10.1.0.11
+      os: cisco_ios
+  vars:
+    ansible_become: yes
+    ansible_become_method: enable
+    ansible_become_password: cisco1234
+    ansible_network_os: cisco.ios.ios
+    ansible_user: cisco
+    ansible_password: cisco1234
+

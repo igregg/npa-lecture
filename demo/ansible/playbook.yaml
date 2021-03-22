@@ -1,0 +1,30 @@
+---
+
+- name: Demo playbook
+  connection: network_cli
+  gather_facts: no
+  hosts: all
+  tasks:
+  - name: Run command show version and parse with textfsm
+    ansible.netcommon.cli_parse:
+      command: "show version"
+      parser:
+        name: ansible.netcommon.textfsm
+        os: "{{ hostvars[inventory_hostname]['os'] }}"
+      set_fact: device_version
+
+  - name: Print parsed cli
+    debug:
+      msg: "{{ ansible_facts['device_version'] }}"
+
+  - name: Run command show interfaces and parse with textfsm
+    ansible.netcommon.cli_parse:
+      command: "show interfaces"
+      parser:
+        name: ansible.netcommon.textfsm
+        os: "{{ hostvars[inventory_hostname]['os'] }}"
+      set_fact: device_interface
+
+  - name: Print parsed cli
+    debug:
+      msg: "{{ ansible_facts['device_interface'] }}"
