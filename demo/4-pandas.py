@@ -22,4 +22,5 @@ print(intf_table.dtypes)
 # filter interface has OUTPUT_PACKETS more than 0
 print(intf_table[intf_table['OUTPUT_PACKETS'] > 0])
 
+# export to CSV
 intf_table.to_csv('interfaces.csv', encoding='utf-8', index=False)

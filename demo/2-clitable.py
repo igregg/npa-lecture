@@ -1,5 +1,6 @@
-from textfsm import clitable 
 from netmiko.utilities import clitable_to_dict
+from textfsm import clitable
+
 
 index_file = 'index'
 template_dir = '/Users/thanadet.k/Projects/ntc-templates/ntc_templates/templates'

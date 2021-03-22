@@ -1,7 +1,7 @@
 from netmiko import ConnectHandler
 
 import os
-import pandas as pd
+import textfsm
 
 os.environ['NET_TEXTFSM'] = '/Users/thanadet.k/Projects/ntc-templates/ntc_templates/templates'
 
@@ -12,9 +12,12 @@ router1 = {
     "password": "cisco1234",
 }
 net_connect = ConnectHandler(**router1) 
-output = net_connect.send_command("show interface", use_textfsm=True)
+output = net_connect.send_command("show users")
 
-intf_table = pd.DataFrame(output)
+template = open('cisco_ios_show_users.textfsm')
 
-print(intf_table)
-print(intf_table.dtypes)
+re_table = textfsm.TextFSM(template)
+fsm_results = re_table.ParseText(output)
+
+print(re_table.header)
+print(fsm_results)

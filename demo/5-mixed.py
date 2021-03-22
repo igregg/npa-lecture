@@ -1,6 +1,7 @@
 from netmiko import ConnectHandler
 
 import os
+import pandas as pd
 
 os.environ['NET_TEXTFSM'] = '/Users/thanadet.k/Projects/ntc-templates/ntc_templates/templates'
 
@@ -13,4 +14,6 @@ router1 = {
 net_connect = ConnectHandler(**router1) 
 output = net_connect.send_command("show interface", use_textfsm=True)
 
-print(output)
+intf_table = pd.DataFrame(output)
+
+print(intf_table.to_json(orient="records"))
