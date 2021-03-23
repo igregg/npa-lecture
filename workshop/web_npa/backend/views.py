@@ -3,9 +3,8 @@ from netmiko import ConnectHandler
 import os
 import pandas as pd
 
+# Change to your ntc-template location
 os.environ['NET_TEXTFSM'] = '/Users/thanadet.k/Projects/ntc-templates/ntc_templates/templates'
-
-# Create your views here.
 
 def connect(request):
     device = {
