@@ -1,0 +1,8 @@
+<form method="POST" action="/do/connect">
+    {% csrf_token %}
+    Host: <input type="text" name="host"/><br />
+    Username: <input type="text" name="username"/><br />
+    Password: <input type="password" name="password"/><br />
+    Command: <input type="text" name="cmd"/><br />
+    <input type="submit" value="Connect"/>
+</form>
